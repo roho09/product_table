@@ -1,22 +1,20 @@
 {
-  "name": "backend",
+  "name": "product",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon server.js", 
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "concurrently \"npm run server\" \"npm run client\"",
+    "client": "npm start --prefix frontend",  
+    "server": "npm start --prefix backend"   
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "description": "",
-  "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.21.2",
-    "mysql": "^2.18.1",
-    "mysql2": "^3.12.0"
-  },
   "devDependencies": {
-    "nodemon": "^3.1.9"
+    "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+   
   }
 }
