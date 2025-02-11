@@ -1,7 +1,9 @@
+// Updated Backend Server.js With Category And Product Routes 
 const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');  // Enable CORS for cross-origin requests
-const productRoutes = require('./routes/productroutes');
+const categoryRoutes = require('./routes/categoryroutes'); // ✅ Fixed import
+const productRoutes = require('./routes/productroutes'); // ✅ Fixed import
 
 // Create an instance of the Express app
 const app = express();
@@ -14,6 +16,9 @@ app.use(bodyParser.json());
 
 // Register product routes to handle product-related API requests
 app.use('/api/products', productRoutes);
+
+// Register category routes to handle category-related API requests
+app.use('/api/categories', categoryRoutes); // ✅ Fixed path prefix
 
 // MySQL database configuration (Assuming your dbConfig.js is working correctly)
 const db = require('./config/dbconfig'); // This should be your MySQL connection configuration file
@@ -33,3 +38,4 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
+
